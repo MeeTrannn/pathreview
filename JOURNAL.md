@@ -8,7 +8,11 @@
 **Tier:** [x] Tier 1
 
 **Problem summary:**
-The regex patterns in bias_detector.py is based on deterministic word-by-word matching (such as using self-taught|online\s+course) to detect if the feedback dismisses the porfolio because online courses are unqualify. Other factors include college background, internship experience, project maturity, age, demographics.
+The regex patterns in bias_detector.py is based on deterministic word-by-word matching (such as using self-taught|online\s+course) to detect if the feedback dismisses the porfolio because online courses are unqualify. Other factors include college background, internship experience, project maturity, age, demographics. 
+
+For the users, this is problematic because their portfolios are judge based on the title and popularity of the organizations they worked with, rather than their actual accomplishment and learning and skills. The feedback does not touch on any things that application could change (for exmaple, demographics) and this exarcebate the discrimination/ class difference between proviledged and unpriviledge communities.
+
+The bias detection should be able to detect if the AI feedback is reasoning based on description of the experience, instead of merely the title.
 
 Original logic:
 ```
@@ -28,6 +32,9 @@ Original logic:
     ]
 ```
 
+**"Is this right for me?" checklist**
+This is a tier 1 issue, the fix only requires change the BiasDetector logic in `safety.bias_detector` and does not have interconnected logic to other files -> this is the right scope for beginner
+
 **Branch name:** fix/151-fix-bias-detection
 
 **Setup confirmation:** App runs locally at localhost:5173
@@ -37,7 +44,7 @@ Original logic:
 ----------------------------------------------------------------------------------
 ## Week 8 — Reproduction & solution planning
 
-**Reproduction commit link:** [link to commit documenting the reproduced issue]
+**Reproduction commit link:** The reproduction steps are recorded in the Reproduction summary section below
 
 **Reproduction summary:**
 Reproduced issue #151 locally.
