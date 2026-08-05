@@ -68,4 +68,43 @@ Steps:
 **PLAN.md link:** https://github.com/MeeTrannn/pathreview/blob/fix/151-fix-bias-detection/PLAN.md
 
 **Blockers or open questions:**
-[Anything you're still uncertain about going into Week 9, or leave blank]
+Resolved going into Week 9: decided regex expansion is the right approach for this Tier 1 issue; LLM-based detection is out of scope.
+
+----------------------------------------------------------------------------------
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+Implemented Steps 0–6 from PLAN.md on branch `fix/151-fix-bias-detection`:
+
+1. Added reusable regex fragments to `BiasDetector` (`_EDU_SOURCE`, `_ROLE`, `_DISMISSAL_VERB`, `_DEMOGRAPHIC_ROLE`, `_SOCIOECONOMIC_BACKGROUND`)
+2. Refactored `DISMISSIVE_PATTERNS` and `DEMOGRAPHIC_PATTERNS` to use those fragments and catch natural phrasing variations (optional `is`, plural roles, dismissal verbs like `can't`, `coding bootcamp` prefix, bootcamp vs formal CS comparison)
+3. All 9 previously failing tests now pass; all 23 regression tests still pass
+4. Added `test_bootcamp_formal_cs_comparison_detected` for the issue reproduction example
+
+**Next steps:**
+- Run final self-review (`make check`, `make test-unit`)
+- Commit changes with conventional commit messages
+- Open PR with pre-existing failure documentation
+
+**Blockers:**
+None.
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** Pending submission
+
+**Branch:** `fix/151-fix-bias-detection`
+
+**What you built:**
+Broadened the regex patterns in `BiasDetector` so they catch natural phrasing variations of educational-background dismissal and demographic assumptions — not just near-exact phrase sequences. Introduced reusable regex fragments to keep patterns maintainable, and refactored both `DISMISSIVE_PATTERNS` and `DEMOGRAPHIC_PATTERNS` to handle plurals, optional words, and causal phrasing like "bootcamp attendance means inadequate training."
+
+**Tests added or updated:**
+- `tests/unit/test_bias_detector.py` — added `test_bootcamp_formal_cs_comparison_detected` covering the issue reproduction example ("only attended a bootcamp… lacks the rigor of a formal CS education"). The 9 previously failing tests and 23 existing regression tests validate all pattern changes with no new tests needed for fixes already covered by the existing suite.
+
+**Self-review confirmation:** [x] make check passes (no new failures — 182 pre-existing lint errors repo-wide)  [x] make test-unit passes (33/33 bias detector tests pass; no new repo-wide failures)
+
+**Draft PR feedback received from:** none
