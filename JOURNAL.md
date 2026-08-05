@@ -95,7 +95,7 @@ None.
 
 ### Check-in 2 (end of week)
 
-**PR link:** Pending submission
+**PR link:** https://github.com/ascherj/pathreview/compare/main...MeeTrannn:fix/151-fix-bias-detection?expand=1 (branch pushed — open PR via this link; `gh` CLI not available locally)
 
 **Branch:** `fix/151-fix-bias-detection`
 
